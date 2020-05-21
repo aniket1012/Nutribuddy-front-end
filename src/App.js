@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 
-import Navbar from './Navbar'
-import MainContainer from './MainContainer'
+import Navbar from './Containers/Navbar'
+import MainContainer from './Containers/MainContainer'
 
 function App() {
   return (
