@@ -20,3 +20,4 @@ function reducer(prevState = defaultState, action) {
 }
 
 export default reducer
+
