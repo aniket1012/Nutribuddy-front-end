@@ -14,4 +14,28 @@
   color: white;
 }
 
+.home_container {
+  background-color: crimson;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.macro_calc {
+  border-style: solid;
+  border-width: thick;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+
+
+}
+.test {
+  border-style: solid;
+  border-width: thick;
+  margin: 5px;
+  flex-grow: 1;
+}
+
 
