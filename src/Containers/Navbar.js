@@ -14,26 +14,29 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
+  title: {
+    flexGrow: 1,
+  },
 }));
 
-const Navbar = () => {
+function ButtonAppBar() {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{backgroundColor: 'black'}}>
+      <AppBar position="static">
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" style={{flexGrow: 1}}>
+          <Typography variant="h6" className={classes.title}>
             Nutribuddy
           </Typography>
-          {/* <Button color="inherit">Login</Button> */}
+          <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
     </div>
   );
 }
 
-export default Navbar
+export default ButtonAppBar
