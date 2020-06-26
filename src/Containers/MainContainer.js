@@ -6,7 +6,6 @@ class MainContainer extends Component {
         return (
             <div className='home_container'>
                 <MacroCalc/>
-                <div className='test'>div 2</div>
             </div>
         )
     }

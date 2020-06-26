@@ -15,27 +15,44 @@
 }
 
 .home_container {
-  background-color: crimson;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  height: 100vh;
+  background-image: url('https://cdn.hipwallpaper.com/i/6/60/J0HGDL.jpg');
+  background-size: 100% 100%;
+  /* display: flex; */
+  /* justify-content: flex-start; */
+  /* border-style: solid;
+  border-width: 5px; */
+  /* flex-direction: column; */
 
 }
 
 .macro_calc {
-  border-style: solid;
-  border-width: thick;
-  margin: 5px;
+padding: 10px;
+/* border-style: solid;
+border-width: 5px; */
+color: #ffffff;
+text-shadow: 2px 2px black;
+text-shadow: 2px 2px 4px #000000;
+}
+
+.inputs_container{
   display: flex;
   flex-direction: column;
+  width: 30%;
+}
 
+.input {
+   border: 2px solid black;
+   height: 50px;
+}
+
+.macro_results {
 
 }
 .test {
   border-style: solid;
   border-width: thick;
-  margin: 5px;
-  flex-grow: 1;
+  /* flex-grow: 1; */
 }
 
 
