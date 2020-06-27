@@ -16,7 +16,8 @@
 
 .home_container {
   height: 100vh;
-  background-image: url('https://cdn.hipwallpaper.com/i/6/60/J0HGDL.jpg');
+  /* background-image: url('https://cdn.hipwallpaper.com/i/6/60/J0HGDL.jpg'); */
+  background-image: url('../src/images/macro-cal.jpg');
   background-size: 100% 100%;
   /* display: flex; */
   /* justify-content: flex-start; */
@@ -27,7 +28,7 @@
 }
 
 .macro_calc {
-padding: 10px;
+padding: 50px;
 /* border-style: solid;
 border-width: 5px; */
 color: #ffffff;
@@ -43,10 +44,13 @@ text-shadow: 2px 2px 4px #000000;
   
 }
 
-.input {
-   border: 2px solid black;
+.inputs {
+   /* border: 2px solid black; */
    height: 50px;
+   border: none;
+   border-bottom: 2px solid #434343;
 }
+
 
 .macro_results {
 
