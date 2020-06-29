@@ -13,11 +13,14 @@ class MacroCalc extends Component {
         exerciseLevel: null,
         goal: null,
 
-        bmr: null,
-        tdee: null,
-        protein: null,
-        carbohydrates: null,
-        fat: null,
+        biometrics: {
+            bmr: null,
+            tdee: null,
+            calories: null,
+            protein: null,
+            carbohydrates: null,
+            fat: null,
+        }
        
     }
 
@@ -27,32 +30,62 @@ class MacroCalc extends Component {
         })
     }
 
-    handleSubmit = () => {
-        let bmr, tdee, protein, carbohydrates, fat
+    handleSubmit = (event) => {
+        event.preventDefault()
+        
+         var form = document.querySelector('.macro_form')
+
+        let bmr, tdee, calories, protein, carbohydrates, fat
+
         if(this.state.gender === 'male'){
             bmr = (10 * (this.state.weight *  0.453592)) + (6.25 * (this.state.height * 2.54)) - (5 * this.state.age) + 5
         } else if ( this.state.gender === 'female'){
-            bmr = (10 * (this.state.weight * 0.453592)) + (6.25 * (this.state.height * 2.54)) - (5 * this.state.age) - 161 
+            bmr = (10 * (this.state.weight * 0.453592)) + (6.25 * (this.state.height * 2.54)) - (5 * this.state.age) - 161
         }
         
         tdee = bmr * parseFloat(this.state.exerciseLevel)
 
-        
+        if(this.state.goal === 'recomp'){
+            calories = tdee
+            protein = (calories * .4)/4
+            carbohydrates = (calories * .3)/4
+            fat = (calories * .3)/9
+        }else if(this.state.goal === 'lose'){
+            calories = tdee - (tdee * 0.15)
+            protein = (calories * .4)/4
+            carbohydrates = (calories * .3)/4
+            fat = (calories * .3)/9
+        } else if(this.state.goal === 'gain'){
+            calories = tdee + (tdee * 0.15)
+            protein = (calories * .3)/4
+            carbohydrates = (calories * .4)/4
+            fat = (calories * .3)/9
+        }
 
-      
-        console.log(bmr, tdee)
-        // return bmr
+          this.setState({
+            biometrics:{
+                bmr: bmr.toFixed(2),
+                tdee: tdee.toFixed(2),
+                calories: calories.toFixed(2),
+                protein: protein.toFixed(2),
+                carbohydrates: carbohydrates.toFixed(2),
+                fat: fat.toFixed(2),
+            }
+          })
+
+          form.reset()
 
     }
     
     render() {
-        console.log( this.state)
+        console.log(this.state)
         return (
-            <div className='macro_calc'>
-                <h1> BMR & TDEE Calculator</h1>
-                <div className='inputs_container'>
-                    <h4> To calculate your daily calorie and macro goals, simply fill out the information on the calculator below! </h4>
-                            <h3>{this.props.count}</h3>
+            <div className='macro_container'>
+
+                <div className='macro_calc'>
+                    <h5> To calculate your daily calorie and macro goals, simply fill out the information on the calculator below! </h5>
+                    <form className='macro_form' onSubmit={this.handleSubmit}>
+                        <div className='inputs_container'>
                             <h4>Gender</h4>
                             <select  className= 'inputs' name='gender' placeholder='Gender' onChange={this.handleChange}>
                                 <option value=''>Select</option>
@@ -60,11 +93,11 @@ class MacroCalc extends Component {
                                 <option value='female'>Female</option>
                             </select>
                             <h4>Enter Age</h4>
-                            <input  className='inputs' type='number' name='age' placeholder='Age' onChange={this.handleChange}></input>
+                            <input  className='inputs' type='number' name='age' placeholder='Age' onChange={this.handleChange}/>
                             <h4>Enter Weight</h4>
-                            <input className='inputs' type='number' name='weight' placeholder='Weight (lbs)' onChange={this.handleChange}></input>
+                            <input className='inputs' type='number' name='weight' placeholder='Weight (lbs)' onChange={this.handleChange}/>
                             <h4>Enter Height</h4>
-                            <input className='inputs' type='number' name='height' placeholder='Height (in)' onChange={this.handleChange}></input>
+                            <input className='inputs' type='number' name='height' placeholder='Height (in)' onChange={this.handleChange}/>
                             <h4>Exercise Level</h4>
                             <select  className= 'inputs' name='exerciseLevel' placeholder='Exercise Level' onChange={this.handleChange}>
                                 <option value=''>Select</option>
@@ -80,20 +113,21 @@ class MacroCalc extends Component {
                                 <option value='recomp'>Recomp</option>
                             </select>
                             <br/>
-                            {/* <button className='inputs' onClick={this.props.incrementLikes} style={{backgroundColor: 'black', color: 'white', fontSize:'20px'}}>Submit</button> */}
-                            <button className='inputs' onClick={this.handleSubmit} style={{backgroundColor: 'black', color: 'white', fontSize:'20px'}}>Submit</button>
+                            <button className='inputs' type='submit' style={{backgroundColor: 'black', color: 'white', fontSize:'20px'}}>Submit</button>
+                        </div>
+                    </form>
                 </div>
-                {/* <div className='macro_results'>
-                    <div className='test'>div 2</div>
-                </div> */}
+
+                <div className='macro_results'>
+                    <div className='test'>{this.state.biometrics.bmr} div 2</div>
+                </div>
+
             </div>
         );
     }
 }
 
     function mapStateToProps(state){
-        console.log(state)
-
         return {
             count: state.count
         }

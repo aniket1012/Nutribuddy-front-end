@@ -5,6 +5,7 @@ class MainContainer extends Component {
     render() {
         return (
             <div className='home_container'>
+                <h1> BMR & TDEE Calculator</h1>
                 <MacroCalc/>
             </div>
         )
