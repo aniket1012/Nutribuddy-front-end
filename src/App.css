@@ -18,7 +18,19 @@
   height: 100vh;
   width: 100vw;
   margin: 0;
-  background-image: url('../src/images/macro-cal.jpg');
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.4)
+  ),
+  url('https://images.unsplash.com/photo-1536534891787-3099c041fed8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1061&q=80');
+  /* background-image: linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  ), url('https://images.unsplash.com/photo-1497888329096-51c27beff665?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80'); */
+  /* background-image: linear-gradient(
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.3)
+  ), url('../src/images/macro-cal.jpg'); */
   background-size: 100% 100%;
   color: #ffffff;
   text-shadow: 2px 2px black;
@@ -32,6 +44,7 @@
 
 .home_container h1 {
   margin: 0;
+  padding: 10px;
 }
 
 .macro_container {
@@ -46,11 +59,12 @@ border-width: 5px; */
 color: #ffffff;
 font-size: 20px;
 text-shadow: 2px 2px black;
-text-shadow: 2px 2px 4px #000000;
+/* text-shadow: 2px 2px 4px #000000; */
 width: 40%;
 display: flex; 
 flex-direction: column;
-align-items: flex-start;
+/* align-items: flex-start; */
+justify-content: space-between;
 
 }
 
@@ -61,9 +75,8 @@ align-items: flex-start;
 .inputs_container{
   /* border-style: solid;
   border-width: 5px; */
-  margin-top: 20px;
-  width: 80%;
-  
+  margin-top: 70px;
+  /* width: 80%; */
 }
 
 .inputs_container h4 {
@@ -72,7 +85,7 @@ align-items: flex-start;
 }
 
 .inputs {
-  width: 50%;
+  width: 40%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -83,12 +96,30 @@ align-items: flex-start;
 
 .macro_results {
   width: 60%;
+  height: 850px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* border: 3px solid green;  */
 
 }
-.test {
-  border-style: solid;
+
+.test p {
+  /* border-style: solid;
   border-width: thick;
-  /* flex-grow: 1; */
+  border-radius: 10px; */
+  text-align: center;
+  font-size: 20px;
+  font-weight: 550;
+  text-shadow: 2px 2px black;
+}
+
+.test h2 {
+  font-size: 25px;
+  /* text-decoration: underline solid white; */
+
 }
 
 

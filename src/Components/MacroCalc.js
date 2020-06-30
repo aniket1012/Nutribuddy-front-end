@@ -14,6 +14,7 @@ class MacroCalc extends Component {
         goal: null,
 
         biometrics: {
+            available: false,
             bmr: null,
             tdee: null,
             calories: null,
@@ -47,16 +48,16 @@ class MacroCalc extends Component {
 
         if(this.state.goal === 'recomp'){
             calories = tdee
-            protein = (calories * .4)/4
-            carbohydrates = (calories * .3)/4
+            protein = (calories * .3)/4
+            carbohydrates = (calories * .4)/4
             fat = (calories * .3)/9
         }else if(this.state.goal === 'lose'){
-            calories = tdee - (tdee * 0.15)
-            protein = (calories * .4)/4
-            carbohydrates = (calories * .3)/4
+            calories = tdee - (tdee * 0.25)
+            protein = (calories * .3)/4
+            carbohydrates = (calories * .4)/4
             fat = (calories * .3)/9
         } else if(this.state.goal === 'gain'){
-            calories = tdee + (tdee * 0.15)
+            calories = tdee + (tdee * 0.25)
             protein = (calories * .3)/4
             carbohydrates = (calories * .4)/4
             fat = (calories * .3)/9
@@ -64,6 +65,7 @@ class MacroCalc extends Component {
 
           this.setState({
             biometrics:{
+                available: !this.state.available,
                 bmr: bmr.toFixed(2),
                 tdee: tdee.toFixed(2),
                 calories: calories.toFixed(2),
@@ -83,7 +85,7 @@ class MacroCalc extends Component {
             <div className='macro_container'>
 
                 <div className='macro_calc'>
-                    <h5> To calculate your daily calorie and macro goals, simply fill out the information on the calculator below! </h5>
+                    {/* <h5> To calculate your daily calorie and macro goals, simply fill out the information on the calculator below! </h5> */}
                     <form className='macro_form' onSubmit={this.handleSubmit}>
                         <div className='inputs_container'>
                             <h4>Gender</h4>
@@ -113,13 +115,40 @@ class MacroCalc extends Component {
                                 <option value='recomp'>Recomp</option>
                             </select>
                             <br/>
-                            <button className='inputs' type='submit' style={{backgroundColor: 'black', color: 'white', fontSize:'20px'}}>Submit</button>
+                            <button className='inputs' type='submit' style={{backgroundColor: 'grey', color: 'white', fontSize:'20px'}}>Submit</button>
                         </div>
                     </form>
                 </div>
 
                 <div className='macro_results'>
-                    <div className='test'>{this.state.biometrics.bmr} div 2</div>
+                    {(this.state.biometrics.available) ? 
+                    <div className='test'>
+                        <h2 >Basel Metabolic Rate (BMR)</h2>
+                        <p>{this.state.biometrics.bmr} Calorie/Day</p>
+                        <br/>
+                        {/* <br/> */}
+                        <h2>Total Daily Energy Expenditure (TDEE)</h2>
+                        <p>{this.state.biometrics.tdee}Calories/day</p>
+                        <br/>
+                        {/* <br/> */}
+                        <h2>Daily Calorie Consumption</h2>
+                        <p>{this.state.biometrics.calories}Calorie/Day</p>
+                        <br/>
+                        {/* <br/> */}
+                        <h2>Daily Protein Consumption</h2>
+                        <p>{this.state.biometrics.protein}Grams/Day</p>
+                        <br/>
+                        {/* <br/> */}
+                        <h2>Daily Carbohydrates Consumption</h2>
+                        <p>{this.state.biometrics.carbohydrates}Grams/Day</p>
+                        <br/>
+                        {/* <br/> */}
+                        <h2>Daily Fats Consumption</h2>
+                        <p>{this.state.biometrics.fat}Grams/Day</p>
+                    </div>  
+                    :  
+                    <div className='test'>{this.state.biometrics.bmr} <h1>NO BMR</h1></div>}
+                    
                 </div>
 
             </div>

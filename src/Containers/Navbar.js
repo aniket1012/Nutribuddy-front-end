@@ -24,7 +24,7 @@ function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{backgroundImage:'linear-gradient(to right, #434343, #000000 , #434343)'}}>
+      <AppBar position="static" style={{backgroundImage:'linear-gradient(to right, #8e9eab, #434343, #8e9eab)'}}>
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
