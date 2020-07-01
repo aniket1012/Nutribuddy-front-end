@@ -25,6 +25,7 @@ class MacroCalc extends Component {
        
     }
 
+
     handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
@@ -88,26 +89,26 @@ class MacroCalc extends Component {
                     {/* <h5> To calculate your daily calorie and macro goals, simply fill out the information on the calculator below! </h5> */}
                     <form className='macro_form' onSubmit={this.handleSubmit}>
                         <div className='inputs_container'>
-                            <h4>Gender</h4>
+                            <h3>Gender</h3>
                             <select  className= 'inputs' name='gender' placeholder='Gender' onChange={this.handleChange}>
                                 <option value=''>Select</option>
                                 <option value='male'>Male</option>
                                 <option value='female'>Female</option>
                             </select>
-                            <h4>Enter Age</h4>
+                            <h3>Enter Age</h3>
                             <input  className='inputs' type='number' name='age' placeholder='Age' onChange={this.handleChange}/>
-                            <h4>Enter Weight</h4>
+                            <h3>Enter Weight</h3>
                             <input className='inputs' type='number' name='weight' placeholder='Weight (lbs)' onChange={this.handleChange}/>
-                            <h4>Enter Height</h4>
+                            <h3>Enter Height</h3>
                             <input className='inputs' type='number' name='height' placeholder='Height (in)' onChange={this.handleChange}/>
-                            <h4>Exercise Level</h4>
+                            <h3>Exercise Level</h3>
                             <select  className= 'inputs' name='exerciseLevel' placeholder='Exercise Level' onChange={this.handleChange}>
                                 <option value=''>Select</option>
                                 <option value='1.2'>Sedentary (No Exercise)</option>
                                 <option value='1.55'>Moderate (3x-4x Per Week)</option>
                                 <option value='1.725'>Active(5x+ Per Week)</option>
                             </select>
-                            <h4>Primary Goal</h4>
+                            <h3>Primary Goal</h3>
                             <select  className= 'inputs' name='goal' placeholder='Primary Goal' onChange={this.handleChange}>
                                 <option value=''>Select</option>
                                 <option value='lose'>Lose Weight</option>
@@ -115,7 +116,9 @@ class MacroCalc extends Component {
                                 <option value='recomp'>Recomp</option>
                             </select>
                             <br/>
-                            <button className='inputs' type='submit' style={{backgroundColor: 'grey', color: 'white', fontSize:'20px'}}>Submit</button>
+                            <br/>
+                            <button className='inputs' type='submit' style={{backgroundColor: '#212121', color: 'white', fontSize:'20px', boxShadow: 'inset 0 0 10px #ffffff'}}>Submit</button>
+                            {/* <button className='inputs' type='submit' style={{backgroundColor: '#182848', color: 'white', fontSize:'20px'}}>Submit</button> */}
                         </div>
                     </form>
                 </div>
@@ -123,31 +126,26 @@ class MacroCalc extends Component {
                 <div className='macro_results'>
                     {(this.state.biometrics.available) ? 
                     <div className='test'>
-                        <h2 >Basel Metabolic Rate (BMR)</h2>
+                       <h2 >Basel Metabolic Rate (BMR)</h2>
                         <p>{this.state.biometrics.bmr} Calorie/Day</p>
                         <br/>
-                        {/* <br/> */}
                         <h2>Total Daily Energy Expenditure (TDEE)</h2>
-                        <p>{this.state.biometrics.tdee}Calories/day</p>
+                        <p>{this.state.biometrics.tdee}Calories/Day</p>
                         <br/>
-                        {/* <br/> */}
-                        <h2>Daily Calorie Consumption</h2>
+                        <h2>Calories</h2>
                         <p>{this.state.biometrics.calories}Calorie/Day</p>
                         <br/>
-                        {/* <br/> */}
-                        <h2>Daily Protein Consumption</h2>
+                        <h2>Protein</h2>
                         <p>{this.state.biometrics.protein}Grams/Day</p>
                         <br/>
-                        {/* <br/> */}
-                        <h2>Daily Carbohydrates Consumption</h2>
+                        <h2>Carbohydrates</h2>
                         <p>{this.state.biometrics.carbohydrates}Grams/Day</p>
                         <br/>
-                        {/* <br/> */}
-                        <h2>Daily Fats Consumption</h2>
+                        <h2>Fats</h2>
                         <p>{this.state.biometrics.fat}Grams/Day</p>
                     </div>  
                     :  
-                    <div className='test'>{this.state.biometrics.bmr} <h1>NO BMR</h1></div>}
+                    <div className='test'>{this.state.biometrics.bmr} </div>}
                     
                 </div>
 

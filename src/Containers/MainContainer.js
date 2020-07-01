@@ -6,7 +6,7 @@ class MainContainer extends Component {
         return (
             <div className='home_container'>
                 <h1> BMR & TDEE Calculator</h1>
-                <h4> To calculate your daily calorie and macro goals, simply fill out the information on the calculator below! </h4>
+                <h4> To calculate your BMR, TDEE & daily calorie and macro goals, simply fill out the information on the calculator below! </h4>
                 <MacroCalc/>
             </div>
         )
