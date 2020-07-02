@@ -21,7 +21,9 @@ class MacroCalc extends Component {
             protein: null,
             carbohydrates: null,
             fat: null,
-        }
+        },
+
+        credentialError: false 
        
     }
 
@@ -39,45 +41,110 @@ class MacroCalc extends Component {
 
         let bmr, tdee, calories, protein, carbohydrates, fat
 
-        if(this.state.gender === 'male'){
+        if(this.state.gender === 'male' && this.state.age > 0 && this.state.weight > 0 && this.state.height > 0){
             bmr = (10 * (this.state.weight *  0.453592)) + (6.25 * (this.state.height * 2.54)) - (5 * this.state.age) + 5
-        } else if ( this.state.gender === 'female'){
+            
+            tdee = bmr * parseFloat(this.state.exerciseLevel)
+
+                if(this.state.goal === 'recomp'){
+                    calories = tdee
+                    protein = (calories * .3)/4
+                    carbohydrates = (calories * .4)/4
+                    fat = (calories * .3)/9
+                }else if(this.state.goal === 'lose'){
+                    calories = tdee - (tdee * 0.25)
+                    protein = (calories * .3)/4
+                    carbohydrates = (calories * .4)/4
+                    fat = (calories * .3)/9
+                } else if(this.state.goal === 'gain'){
+                    calories = tdee + (tdee * 0.25)
+                    protein = (calories * .3)/4
+                    carbohydrates = (calories * .4)/4
+                    fat = (calories * .3)/9
+                }
+
+                this.setState({
+                    biometrics:{
+                        available: !this.state.available,
+                        bmr: bmr.toFixed(2),
+                        tdee: tdee.toFixed(2),
+                        calories: calories.toFixed(2),
+                        protein: protein.toFixed(2),
+                        carbohydrates: carbohydrates.toFixed(2),
+                        fat: fat.toFixed(2),
+                    }
+                })
+        } else if ( this.state.gender === 'female' && this.state.age > 0 && this.state.weight > 0 && this.state.height > 0){
             bmr = (10 * (this.state.weight * 0.453592)) + (6.25 * (this.state.height * 2.54)) - (5 * this.state.age) - 161
+
+            tdee = bmr * parseFloat(this.state.exerciseLevel)
+
+                if(this.state.goal === 'recomp'){
+                    calories = tdee
+                    protein = (calories * .3)/4
+                    carbohydrates = (calories * .4)/4
+                    fat = (calories * .3)/9
+                }else if(this.state.goal === 'lose'){
+                    calories = tdee - (tdee * 0.25)
+                    protein = (calories * .3)/4
+                    carbohydrates = (calories * .4)/4
+                    fat = (calories * .3)/9
+                } else if(this.state.goal === 'gain'){
+                    calories = tdee + (tdee * 0.25)
+                    protein = (calories * .3)/4
+                    carbohydrates = (calories * .4)/4
+                    fat = (calories * .3)/9
+                }
+
+                this.setState({
+                    biometrics:{
+                        available: !this.state.available,
+                        bmr: bmr.toFixed(2),
+                        tdee: tdee.toFixed(2),
+                        calories: calories.toFixed(2),
+                        protein: protein.toFixed(2),
+                        carbohydrates: carbohydrates.toFixed(2),
+                        fat: fat.toFixed(2),
+                    }
+                })
+        } else {
+            this.setState({
+                credentialError: !false 
+            })
         }
         
-        tdee = bmr * parseFloat(this.state.exerciseLevel)
+        // tdee = bmr * parseFloat(this.state.exerciseLevel)
 
-        if(this.state.goal === 'recomp'){
-            calories = tdee
-            protein = (calories * .3)/4
-            carbohydrates = (calories * .4)/4
-            fat = (calories * .3)/9
-        }else if(this.state.goal === 'lose'){
-            calories = tdee - (tdee * 0.25)
-            protein = (calories * .3)/4
-            carbohydrates = (calories * .4)/4
-            fat = (calories * .3)/9
-        } else if(this.state.goal === 'gain'){
-            calories = tdee + (tdee * 0.25)
-            protein = (calories * .3)/4
-            carbohydrates = (calories * .4)/4
-            fat = (calories * .3)/9
-        }
+        // if(this.state.goal === 'recomp'){
+        //     calories = tdee
+        //     protein = (calories * .3)/4
+        //     carbohydrates = (calories * .4)/4
+        //     fat = (calories * .3)/9
+        // }else if(this.state.goal === 'lose'){
+        //     calories = tdee - (tdee * 0.25)
+        //     protein = (calories * .3)/4
+        //     carbohydrates = (calories * .4)/4
+        //     fat = (calories * .3)/9
+        // } else if(this.state.goal === 'gain'){
+        //     calories = tdee + (tdee * 0.25)
+        //     protein = (calories * .3)/4
+        //     carbohydrates = (calories * .4)/4
+        //     fat = (calories * .3)/9
+        // }
 
-          this.setState({
-            biometrics:{
-                available: !this.state.available,
-                bmr: bmr.toFixed(2),
-                tdee: tdee.toFixed(2),
-                calories: calories.toFixed(2),
-                protein: protein.toFixed(2),
-                carbohydrates: carbohydrates.toFixed(2),
-                fat: fat.toFixed(2),
-            }
-          })
+        //   this.setState({
+        //     biometrics:{
+        //         available: !this.state.available,
+        //         bmr: bmr.toFixed(2),
+        //         tdee: tdee.toFixed(2),
+        //         calories: calories.toFixed(2),
+        //         protein: protein.toFixed(2),
+        //         carbohydrates: carbohydrates.toFixed(2),
+        //         fat: fat.toFixed(2),
+        //     }
+        //   })
 
           form.reset()
-
     }
     
     render() {
@@ -117,36 +184,39 @@ class MacroCalc extends Component {
                             </select>
                             <br/>
                             <br/>
-                            <button className='inputs' type='submit' style={{backgroundColor: '#212121', color: 'white', fontSize:'20px', boxShadow: 'inset 0 0 10px #ffffff'}}>Submit</button>
-                            {/* <button className='inputs' type='submit' style={{backgroundColor: '#182848', color: 'white', fontSize:'20px'}}>Submit</button> */}
+                            {(this.state.goal) ? 
+                            <button className='btn' type='submit'>Submit</button> 
+                            :
+                            <p></p>}
                         </div>
                     </form>
                 </div>
 
+
+
                 <div className='macro_results'>
+                    
                     {(this.state.biometrics.available) ? 
                     <div className='test'>
-                       <h2 >Basel Metabolic Rate (BMR)</h2>
+                        <h2 >Basel Metabolic Rate (BMR)</h2>
                         <p>{this.state.biometrics.bmr} Calorie/Day</p>
-                        <br/>
                         <h2>Total Daily Energy Expenditure (TDEE)</h2>
                         <p>{this.state.biometrics.tdee}Calories/Day</p>
                         <br/>
                         <h2>Calories</h2>
                         <p>{this.state.biometrics.calories}Calorie/Day</p>
-                        <br/>
                         <h2>Protein</h2>
                         <p>{this.state.biometrics.protein}Grams/Day</p>
-                        <br/>
                         <h2>Carbohydrates</h2>
                         <p>{this.state.biometrics.carbohydrates}Grams/Day</p>
-                        <br/>
                         <h2>Fats</h2>
                         <p>{this.state.biometrics.fat}Grams/Day</p>
                     </div>  
-                    :  
-                    <div className='test'>{this.state.biometrics.bmr} </div>}
-                    
+                    :
+                    this.state.credentialError ?  
+                    <div style={{color: 'red', fontSize: '30px'}}> Please Enter Valid Biometric Credentials</div>
+                    :
+                    <div></div>}
                 </div>
 
             </div>
