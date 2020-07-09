@@ -37,7 +37,7 @@ class MacroCalc extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
         
-         var form = document.querySelector('.macro_form')
+        const form = document.querySelector('.macro_form')
 
         let bmr, tdee, calories, protein, carbohydrates, fat
 
@@ -112,43 +112,12 @@ class MacroCalc extends Component {
                 credentialError: !false 
             })
         }
-        
-        // tdee = bmr * parseFloat(this.state.exerciseLevel)
-
-        // if(this.state.goal === 'recomp'){
-        //     calories = tdee
-        //     protein = (calories * .3)/4
-        //     carbohydrates = (calories * .4)/4
-        //     fat = (calories * .3)/9
-        // }else if(this.state.goal === 'lose'){
-        //     calories = tdee - (tdee * 0.25)
-        //     protein = (calories * .3)/4
-        //     carbohydrates = (calories * .4)/4
-        //     fat = (calories * .3)/9
-        // } else if(this.state.goal === 'gain'){
-        //     calories = tdee + (tdee * 0.25)
-        //     protein = (calories * .3)/4
-        //     carbohydrates = (calories * .4)/4
-        //     fat = (calories * .3)/9
-        // }
-
-        //   this.setState({
-        //     biometrics:{
-        //         available: !this.state.available,
-        //         bmr: bmr.toFixed(2),
-        //         tdee: tdee.toFixed(2),
-        //         calories: calories.toFixed(2),
-        //         protein: protein.toFixed(2),
-        //         carbohydrates: carbohydrates.toFixed(2),
-        //         fat: fat.toFixed(2),
-        //     }
-        //   })
 
           form.reset()
     }
     
     render() {
-        console.log(this.state)
+        console.log(this.state, this.props)
         return (
             <div className='macro_container'>
 

@@ -49,7 +49,14 @@
 
 .home_container h1 {
   margin: 0;
-  padding: 10px;
+  padding: 30px;
+  font-family: 'Merienda One', cursive;
+}
+
+.home_container h4 {
+  margin: 0;
+  /* padding: 30px; */
+  font-family: 'Open Sans', sans-serif;
 }
 
 .macro_container {
