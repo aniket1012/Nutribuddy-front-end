@@ -117,12 +117,11 @@ class MacroCalc extends Component {
     }
     
     render() {
-        console.log(this.state, this.props)
+        // console.log(this.state, this.props)
         return (
             <div className='macro_container'>
 
                 <div className='macro_calc'>
-                    {/* <h5> To calculate your daily calorie and macro goals, simply fill out the information on the calculator below! </h5> */}
                     <form className='macro_form' onSubmit={this.handleSubmit}>
                         <div className='inputs_container'>
                             <h3>Gender</h3>
@@ -164,14 +163,14 @@ class MacroCalc extends Component {
 
 
                 <div className='macro_results'>
-                    
                     {(this.state.biometrics.available) ? 
-                    <div className='test'>
+                    <div className='results'>
                         <h2 >Basel Metabolic Rate (BMR)</h2>
                         <p>{this.state.biometrics.bmr} Calorie/Day</p>
                         <h2>Total Daily Energy Expenditure (TDEE)</h2>
                         <p>{this.state.biometrics.tdee}Calories/Day</p>
                         <br/>
+                        {/* <h1>Macros</h1> */}
                         <h2>Calories</h2>
                         <p>{this.state.biometrics.calories}Calorie/Day</p>
                         <h2>Protein</h2>
