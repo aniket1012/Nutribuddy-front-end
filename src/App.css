@@ -257,7 +257,7 @@ text-align: center;
 #search_ing{
 width: 350px;
 height: 40px;
-margin-right: 10px;
+margin-right: 25px;
 color: #ffffff;
 font-size: 20px;
 border: none;
@@ -267,7 +267,7 @@ background:rgba(255, 255, 255, 0.4);
 text-align: center;
 }
 
-#search_submit{
+.search_submit{
   /* width: 75px;
   height: 40px; */
   width: 10%;
