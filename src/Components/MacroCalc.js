@@ -123,28 +123,28 @@ class MacroCalc extends Component {
 
                 <div className='macro_calc'>
                     <form className='macro_form' onSubmit={this.handleSubmit}>
-                        <div className='inputs_container'>
+                        <div className='macro_inputs_container'>
                             <h3>Gender</h3>
-                            <select  className= 'inputs' name='gender' placeholder='Gender' onChange={this.handleChange}>
+                            <select  className= 'macro_inputs' name='gender' placeholder='Gender' onChange={this.handleChange}>
                                 <option value=''>Select</option>
                                 <option value='male'>Male</option>
                                 <option value='female'>Female</option>
                             </select>
                             <h3>Enter Age</h3>
-                            <input  className='inputs' type='number' name='age' placeholder='Age' onChange={this.handleChange}/>
+                            <input  className='macro_inputs' type='number' name='age' placeholder='Age' onChange={this.handleChange}/>
                             <h3>Enter Weight</h3>
-                            <input className='inputs' type='number' name='weight' placeholder='Weight (lbs)' onChange={this.handleChange}/>
+                            <input className='macro_inputs' type='number' name='weight' placeholder='Weight (lbs)' onChange={this.handleChange}/>
                             <h3>Enter Height</h3>
-                            <input className='inputs' type='number' name='height' placeholder='Height (in)' onChange={this.handleChange}/>
+                            <input className='macro_inputs' type='number' name='height' placeholder='Height (in)' onChange={this.handleChange}/>
                             <h3>Exercise Level</h3>
-                            <select  className= 'inputs' name='exerciseLevel' placeholder='Exercise Level' onChange={this.handleChange}>
+                            <select  className= 'macro_inputs' name='exerciseLevel' placeholder='Exercise Level' onChange={this.handleChange}>
                                 <option value=''>Select</option>
                                 <option value='1.2'>Sedentary (No Exercise)</option>
                                 <option value='1.55'>Moderate (3x-4x Per Week)</option>
                                 <option value='1.725'>Active(5x+ Per Week)</option>
                             </select>
                             <h3>Primary Goal</h3>
-                            <select  className= 'inputs' name='goal' placeholder='Primary Goal' onChange={this.handleChange}>
+                            <select  className= 'macro_inputs' name='goal' placeholder='Primary Goal' onChange={this.handleChange}>
                                 <option value=''>Select</option>
                                 <option value='lose'>Lose Weight</option>
                                 <option value='gain'>Gain Weight </option>
