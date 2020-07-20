@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router-dom'
 import Navbar from './Containers/Navbar'
 import MainContainer from './Containers/MainContainer'
 import CreateMealContainer from './Containers/CreateMealContainer'
-
+import Login from './Forms/Login'
 
 class App extends Component {
 
@@ -16,6 +16,7 @@ class App extends Component {
         <Navbar/>
 
         <Switch>
+          <Route exact path='/login'component={Login}/>
           <Route exact path='/'component={MainContainer}/>
           <Route exact path='/create_a_meal' component={CreateMealContainer}/>
         </Switch>
