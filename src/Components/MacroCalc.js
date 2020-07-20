@@ -111,6 +111,7 @@ class MacroCalc extends Component {
             this.setState({
                 credentialError: !false 
             })
+            // alert("Enter Valid Biometric Data")
         }
 
           form.reset()
