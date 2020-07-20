@@ -18,7 +18,6 @@ class App extends Component {
         <Switch>
           <Route exact path='/'component={MainContainer}/>
           <Route exact path='/create_a_meal' component={CreateMealContainer}/>
-
         </Switch>
   
       </div>

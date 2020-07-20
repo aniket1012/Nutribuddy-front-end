@@ -7,7 +7,7 @@ class SearchBar extends Component {
         unit: null,
         searchTerm: null,
 
-        
+
     }
 
     render() {
@@ -15,9 +15,25 @@ class SearchBar extends Component {
             <div className='search_bar'>
                 <div className='create_search_inputs_container'>
                     <input id='quantity' placeholder='Qty' type='number'/>
-                    <input id='unit' placeholder='Unit'/>
+                    <select  id='unit' name='unit' onChange={this.handleChange}>
+                                <option value=''>Unit</option>
+                                <option value='teaspoon'>teaspoon</option>
+                                <option value='tablespoon'>tablespoon</option>
+                                <option value='fluiud ounce'>fluiud ounce</option>
+                                <option value='cup'>cup</option>
+                                <option value='pint'>pint</option>
+                                <option value='quart'>quart</option>
+                                <option value='gallon'>gallon</option>
+                                <option value='millileter'>millileter</option>
+                                <option value='liter'>liter</option>
+                                <option value='pound'>pound</option>
+                                <option value='ounce'>ounce</option>
+                                <option value='milligram'>milligram</option>
+                                <option value='gram'>gram</option>
+                                <option value='kilogram'>kilogram</option>
+                            </select>
                     <input id='search_ing' placeholder='Search Ingredients 🔍'/>
-                    <button class='search_submit'>Search</button>
+                    <button className='search_submit'>Search</button>
                 </div>
             </div>
         );

@@ -117,7 +117,6 @@ class MacroCalc extends Component {
     }
     
     render() {
-        // console.log(this.state, this.props)
         return (
             <div className='macro_container'>
 
@@ -159,8 +158,6 @@ class MacroCalc extends Component {
                         </div>
                     </form>
                 </div>
-
-
 
                 <div className='macro_results'>
                     {(this.state.biometrics.available) ? 

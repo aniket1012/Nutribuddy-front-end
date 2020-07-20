@@ -1,5 +1,7 @@
 const defaultState = {
     count: 0,
+    user: null,
+    myMeals: null
     
 }
 
