@@ -2,8 +2,12 @@ import React from 'react'
 import { 
   AppBar,
   Toolbar, 
-  useScrollTrigger
+  useScrollTrigger,
+  Typography,
 } from '@material-ui/core'
+
+import { makeStyles } from "@material-ui/core/styles";
+import logo from "../../assets/images/Logo Files/For Web/svg/Color logo - no background.svg";
 
 
 function ElevationScroll(props) {
@@ -20,15 +24,35 @@ function ElevationScroll(props) {
   });
 }
 
+const useStyles = makeStyles((theme) => ({
+  toolbarMargin: {
+    ...theme.mixins.toolbar,
+    marginBottom: '3em'
+  },
+  logo: {
+    height: '2em'
+  }
+
+}))
 
 function Header() {
+  const classes = useStyles()
+
+
   return (
-    <AppBar position='fixed'>
+    <React.Fragment>
       <ElevationScroll>
-        <Toolbar>NutriBuddy</Toolbar>
+        <AppBar position="fixed" color="primary">
+          <Toolbar disableGutters>
+            <Typography variant='h3' >
+              <img src={logo} alt='logo' className={classes.logo}/>
+            </Typography>
+          </Toolbar>
+        </AppBar>
       </ElevationScroll>
-    </AppBar>
-  )
+      <div className={classes.toolbarMargin}/>
+    </React.Fragment>
+  );
 }
 
 export default Header

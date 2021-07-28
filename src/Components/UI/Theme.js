@@ -23,7 +23,7 @@ export default createTheme({
   },
   typography: {
     tab: {
-      ffontFamily: "Raleway",
+      fontFamily: "Raleway",
       textTransform: "none",
       fontWeight: 700,
       fontSize: "1rem",
