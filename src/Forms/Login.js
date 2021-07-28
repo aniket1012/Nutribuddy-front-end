@@ -17,7 +17,7 @@ class Login extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
 
-        fetch("http:localhost:300/api/v1/login",{
+        fetch("http://localhost:300/api/v1/login",{
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
