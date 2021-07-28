@@ -1,19 +1,24 @@
 import { createTheme } from "@material-ui/core/styles";
 
-const arcBlue = "#0B72B9";
-const arcOrange = "#FFBA60";
+const darkGrey = "#303841";
+const lightGrey = "#3A4750";
+const blue = "#00ADB5";
+const ivory = "#EEEEEE";
+
 
 export default createTheme({
   palette: {
     common: {
-      arcBlue: `${arcBlue}`,
-      arcOrange: `${arcOrange}`,
+      darkGrey: `${darkGrey}`,
+      lightGrey: `${lightGrey}`,
+      blue: `${blue}`,
+      ivory: `${ivory}`,
     },
     primary: {
-      main: `${arcBlue}`,
+      main: `${darkGrey}`,
     },
     secondary: {
-      main: `${arcOrange}`,
+      main: `${lightGrey}`,
     },
   },
   typography: {
