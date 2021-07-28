@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route, Switch } from 'react-router-dom'
 
-import Navbar from './Containers/Navbar'
+import Header from './Containers/Header'
 import MainContainer from './Containers/MainContainer'
-import CreateMealContainer from './Containers/CreateMealContainer'
 import Login from './Forms/Login'
 
 class App extends Component {
@@ -13,12 +12,10 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-        <Navbar/>
-
+        <Header/>
         <Switch>
           <Route exact path='/login'component={Login}/>
           <Route exact path='/'component={MainContainer}/>
-          <Route exact path='/create_a_meal' component={CreateMealContainer}/>
         </Switch>
   
       </div>
