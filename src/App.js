@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route, Switch } from 'react-router-dom'
 
-import Header from './Containers/Header'
-import MainContainer from './Containers/MainContainer'
+import Header from './UI/Header'
+import MainContainer from './UI/MainContainer'
 import Login from './Forms/Login'
 
 class App extends Component {
