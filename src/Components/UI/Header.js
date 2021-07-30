@@ -9,7 +9,10 @@ import {
   Button,
   useMediaQuery,
   SwipeableDrawer,
-  IconButton
+  IconButton,
+  List,
+  ListItem,
+  ListItemText
 } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 
@@ -163,7 +166,68 @@ function Header() {
         onClose={() => setOpenDrawer(false)}
         onOpen={()=> setOpenDrawer(true)}
       >
-        Example Drawer
+        <List disablePadding>
+          <ListItem 
+            component={Link} to='/'
+            divider
+            button
+            onClick={()=> setOpenDrawer(false)}
+          >
+            <ListItemText
+            disableTypography
+            >
+              Home
+            </ListItemText>
+          </ListItem>
+          <ListItem 
+            component={Link} to='/createmeal'
+            divider
+            button
+            onClick={()=> setOpenDrawer(false)}
+          >
+            <ListItemText
+            disableTypography
+            >
+              Create Meal
+            </ListItemText>
+          </ListItem>
+          <ListItem 
+            component={Link} to='/mymeals'
+            divider
+            button
+            onClick={()=> setOpenDrawer(false)}
+          >
+            <ListItemText
+            disableTypography
+            >
+              My Meals
+            </ListItemText>
+          </ListItem>
+          <ListItem 
+            component={Link} to='/login'
+            divider
+            button
+            onClick={()=> setOpenDrawer(false)}
+          >
+            <ListItemText
+            disableTypography
+            >
+              Login
+            </ListItemText>
+          </ListItem>
+          <ListItem 
+            component={Link} to='/signup'
+            divider
+            button
+            onClick={()=> setOpenDrawer(false)}
+          >
+            <ListItemText
+            disableTypography
+            >
+              Sign Up
+            </ListItemText>
+          </ListItem>
+        </List>
       </SwipeableDrawer>
       <IconButton onClick={() => setOpenDrawer(!openDrawer)} disableRipple className={classes.drawerIconContianer}>
         <MenuIcon className={classes.drawerIcon}/>
