@@ -4,6 +4,7 @@ const darkGrey = "#303841";
 const lightGrey = "#3A4750";
 const blue = "#00ADB5";
 const ivory = "#EEEEEE";
+const lightGreen = "#28FFBF";
 
 
 export default createTheme({
@@ -13,12 +14,13 @@ export default createTheme({
       lightGrey: `${lightGrey}`,
       blue: `${blue}`,
       ivory: `${ivory}`,
+      lightGreen: `${lightGreen}`,
     },
     primary: {
       main: `${darkGrey}`,
     },
     secondary: {
-      main: `${lightGrey}`,
+      main: `${lightGreen}`,
     },
   },
   typography: {
@@ -28,11 +30,11 @@ export default createTheme({
       fontWeight: 700,
       fontSize: "1rem",
     },
-    estimate: {
+    signUp: {
       fontFamily: "Pacifico",
       fontSize: "1rem",
       textTransform: "none",
-      color: "white",
+      color: lightGrey
     },
   },
 });

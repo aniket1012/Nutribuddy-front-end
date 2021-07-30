@@ -1,11 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { 
   AppBar,
   Toolbar, 
   useScrollTrigger,
   Typography,
   Tabs,
-  Tab
+  Tab,
+  Button
 } from '@material-ui/core'
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -42,6 +43,15 @@ const useStyles = makeStyles((theme) => ({
     ...theme.typography.tab,
     minWidth: 10,
     marginLeft: "25px"
+  },
+  button: {
+    ...theme.typography.signUp,
+    borderRadius: '50px',
+    marginLeft: '50px',
+    marginRight: '25px',
+    height: '45px',
+    
+
   }
 
 
@@ -49,24 +59,48 @@ const useStyles = makeStyles((theme) => ({
 
 function Header() {
   const classes = useStyles()
+  const [value, setValue] = useState(0)
+
+  const handleChange = (e, value) => {
+    setValue(value)
+  }
 
 
   return (
     <React.Fragment>
       <ElevationScroll>
-        <AppBar position="fixed" color='primary'>
+        <AppBar position="fixed" color="primary">
           <Toolbar disableGutters>
-            <img src={logo} alt='logo' className={classes.logo}/>
-            <Tabs className={classes.tabContainer}>
-              <Tab className={classes.tab} label='Home'/>
-              <Tab className={classes.tab} label='Create Meal'/>
-              <Tab className={classes.tab} label='My Meals'/>
-              <Tab className={classes.tab} label='Login/Sign Up'/>
+            <img src={logo} alt="logo" className={classes.logo}/>
+            <Tabs 
+              value={value} 
+              className={classes.tabContainer}
+              onChange={handleChange}
+            >
+              <Tab 
+                className={classes.tab} 
+                label="Home" 
+              />
+              <Tab 
+                className={classes.tab} 
+                label="Create Meal" 
+              />
+              <Tab 
+                className={classes.tab} 
+                label="My Meals" 
+              />
             </Tabs>
+            <Button
+              variant="contained"
+              color="secondary"
+              className={classes.button}
+            >
+              Sign Up
+            </Button>
           </Toolbar>
         </AppBar>
       </ElevationScroll>
-      <div className={classes.toolbarMargin}/>
+      <div className={classes.toolbarMargin} />
     </React.Fragment>
   );
 }
