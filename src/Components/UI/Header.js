@@ -8,6 +8,7 @@ import {
   Tab,
   Button
 } from '@material-ui/core'
+import { Link } from 'react-router-dom';
 
 import { makeStyles } from "@material-ui/core/styles";
 import logo from "../../assets/images/Logo Files/For Web/svg/Color logo - no background.svg";
@@ -80,20 +81,28 @@ function Header() {
               <Tab 
                 className={classes.tab} 
                 label="Home" 
+                component={Link}
+                to='/'
               />
               <Tab 
                 className={classes.tab} 
-                label="Create Meal" 
+                label="Create Meal"
+                component={Link}
+                to='/createmeal' 
               />
               <Tab 
                 className={classes.tab} 
                 label="My Meals" 
+                component={Link}
+                to='/mymeals'
               />
             </Tabs>
             <Button
               variant="contained"
               color="secondary"
               className={classes.button}
+              component={Link}
+              to='signup'
             >
               Sign Up
             </Button>
