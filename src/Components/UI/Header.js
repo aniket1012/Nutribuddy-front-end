@@ -7,8 +7,12 @@ import {
   Tabs,
   Tab,
   Button,
-  useMediaQuery
+  useMediaQuery,
+  SwipeableDrawer,
+  IconButton
 } from '@material-ui/core'
+import MenuIcon from '@material-ui/icons/Menu'
+
 import { useTheme } from "@material-ui/core/styles";
 import { Link } from 'react-router-dom';
 
@@ -33,44 +37,70 @@ function ElevationScroll(props) {
 const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
     ...theme.mixins.toolbar,
-    marginBottom: '3em'
+    marginBottom: "3em",
+    [theme.breakpoints.down("md")]: {
+      marginBottom: "2em",
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "1.25em",
+    },
   },
   logo: {
-    height: '8em',
-    paddingLeft: '10px'
+    height: "8em",
+    paddingLeft: "10px",
+    [theme.breakpoints.down("md")]: {
+      height: "7em",
+    },
+    [theme.breakpoints.down("xs")]: {
+      height: "5.5em",
+    },
   },
   logoContainer: {
     padding: 0,
     "&:hover": {
-      backgroundColor: 'transparent'
-
-    }
+      backgroundColor: "transparent",
+    },
   },
   tabContainer: {
-    marginLeft: 'auto'
+    marginLeft: "auto",
   },
   tab: {
     ...theme.typography.tab,
     minWidth: 10,
-    marginLeft: "25px"
+    marginLeft: "25px",
   },
   button: {
     ...theme.typography.signUp,
-    borderRadius: '50px',
-    marginLeft: '50px',
-    marginRight: '25px',
-    height: '45px',
+    borderRadius: "50px",
+    marginLeft: "50px",
+    marginRight: "25px",
+    height: "45px",
+  },
+  drawerIconContianer: {
+    marginLeft: "auto",
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
+  },
+  drawerIcon: {
+    height: '50px',
+    width: '50px',
+    color: theme.palette.common.lightGreen
   }
-}))
+}));
 
 function Header() {
   const classes = useStyles()
   const [value, setValue] = useState(0)
+  const [openDrawer, setOpenDrawer] = useState(false)
+
+  const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
+  
   const theme = useTheme()
   const matches = useMediaQuery(theme.breakpoints.down('md'))
 
-  const handleChange = (e, value) => {
-    setValue(value)
+  const handleChange = (e, newValue) => {
+    setValue(newValue)
   }
 
   useEffect(() => {
@@ -123,6 +153,23 @@ function Header() {
       </Button>
     </React.Fragment>
   );
+
+  const drawer = (
+    <React.Fragment>
+      <SwipeableDrawer
+        disableBackdropTransition={!iOS}
+        disableDiscovery={iOS}
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+        onOpen={()=> setOpenDrawer(true)}
+      >
+        Example Drawer
+      </SwipeableDrawer>
+      <IconButton onClick={() => setOpenDrawer(!openDrawer)} disableRipple className={classes.drawerIconContianer}>
+        <MenuIcon className={classes.drawerIcon}/>
+      </IconButton>
+    </React.Fragment>
+  );
   return (
     <React.Fragment>
       <ElevationScroll>
@@ -137,7 +184,7 @@ function Header() {
             >
               <img src={logo} alt="logo" className={classes.logo}/>
             </Button>
-            {matches ? null : tabs}
+            {matches ? drawer : tabs}
           </Toolbar>
         </AppBar>
       </ElevationScroll>
