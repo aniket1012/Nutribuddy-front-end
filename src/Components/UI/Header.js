@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.common.lightGreen,
   },
   drawer: {
-    backgroundColor: theme.palette.common.lightGrey,
+    backgroundColor: theme.palette.common.blue,
   },
   drawerItem: {
     ...theme.typography.tab,
@@ -100,6 +100,9 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerItemSignup: {
     backgroundColor: theme.palette.common.lightGreen
+  },
+  drawerItemSelected: {
+    opacity: 1
   }
 }));
 
@@ -184,9 +187,20 @@ function Header() {
             to="/"
             divider
             button
-            onClick={() => setOpenDrawer(false)}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(0);
+            }}
+            selected={value === 0}
           >
-            <ListItemText disableTypography className={classes.drawerItem}>
+            <ListItemText
+              disableTypography
+              className={
+                value === 0
+                  ? [classes.drawerItem, classes.drawerItemSelected]
+                  : classes.drawerItem
+              }
+            >
               Home
             </ListItemText>
           </ListItem>
@@ -195,9 +209,20 @@ function Header() {
             to="/createmeal"
             divider
             button
-            onClick={() => setOpenDrawer(false)}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(1);
+            }}
+            selected={value === 1}
           >
-            <ListItemText disableTypography className={classes.drawerItem}>
+            <ListItemText
+              disableTypography
+              className={
+                value === 1
+                  ? [classes.drawerItem, classes.drawerItemSelected]
+                  : classes.drawerItem
+              }
+            >
               Create Meal
             </ListItemText>
           </ListItem>
@@ -206,9 +231,20 @@ function Header() {
             to="/mymeals"
             divider
             button
-            onClick={() => setOpenDrawer(false)}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(2);
+            }}
+            selected={value === 2}
           >
-            <ListItemText disableTypography className={classes.drawerItem}>
+            <ListItemText
+              disableTypography
+              className={
+                value === 2
+                  ? [classes.drawerItem, classes.drawerItemSelected]
+                  : classes.drawerItem
+              }
+            >
               My Meals
             </ListItemText>
           </ListItem>
@@ -217,9 +253,20 @@ function Header() {
             to="/login"
             divider
             button
-            onClick={() => setOpenDrawer(false)}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(3);
+            }}
+            selected={value === 3}
           >
-            <ListItemText disableTypography className={classes.drawerItem}>
+            <ListItemText
+              disableTypography
+              className={
+                value === 3
+                  ? [classes.drawerItem, classes.drawerItemSelected]
+                  : classes.drawerItem
+              }
+            >
               Login
             </ListItemText>
           </ListItem>
