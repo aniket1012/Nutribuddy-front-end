@@ -86,9 +86,20 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   drawerIcon: {
-    height: '50px',
-    width: '50px',
-    color: theme.palette.common.lightGreen
+    height: "50px",
+    width: "50px",
+    color: theme.palette.common.lightGreen,
+  },
+  drawer: {
+    backgroundColor: theme.palette.common.lightGrey,
+  },
+  drawerItem: {
+    ...theme.typography.tab,
+    // color: theme.palette.common.lightGreen,
+    color: "white",
+  },
+  drawerItemSignup: {
+    backgroundColor: theme.palette.common.lightGreen
   }
 }));
 
@@ -164,73 +175,74 @@ function Header() {
         disableDiscovery={iOS}
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
-        onOpen={()=> setOpenDrawer(true)}
+        onOpen={() => setOpenDrawer(true)}
+        classes={{ paper: classes.drawer }}
       >
         <List disablePadding>
-          <ListItem 
-            component={Link} to='/'
+          <ListItem
+            component={Link}
+            to="/"
             divider
             button
-            onClick={()=> setOpenDrawer(false)}
+            onClick={() => setOpenDrawer(false)}
           >
-            <ListItemText
-            disableTypography
-            >
+            <ListItemText disableTypography className={classes.drawerItem}>
               Home
             </ListItemText>
           </ListItem>
-          <ListItem 
-            component={Link} to='/createmeal'
+          <ListItem
+            component={Link}
+            to="/createmeal"
             divider
             button
-            onClick={()=> setOpenDrawer(false)}
+            onClick={() => setOpenDrawer(false)}
           >
-            <ListItemText
-            disableTypography
-            >
+            <ListItemText disableTypography className={classes.drawerItem}>
               Create Meal
             </ListItemText>
           </ListItem>
-          <ListItem 
-            component={Link} to='/mymeals'
+          <ListItem
+            component={Link}
+            to="/mymeals"
             divider
             button
-            onClick={()=> setOpenDrawer(false)}
+            onClick={() => setOpenDrawer(false)}
           >
-            <ListItemText
-            disableTypography
-            >
+            <ListItemText disableTypography className={classes.drawerItem}>
               My Meals
             </ListItemText>
           </ListItem>
-          <ListItem 
-            component={Link} to='/login'
+          <ListItem
+            component={Link}
+            to="/login"
             divider
             button
-            onClick={()=> setOpenDrawer(false)}
+            onClick={() => setOpenDrawer(false)}
           >
-            <ListItemText
-            disableTypography
-            >
+            <ListItemText disableTypography className={classes.drawerItem}>
               Login
             </ListItemText>
           </ListItem>
-          <ListItem 
-            component={Link} to='/signup'
+          <ListItem
+            component={Link}
+            to="/signup"
             divider
             button
-            onClick={()=> setOpenDrawer(false)}
+            onClick={() => setOpenDrawer(false)}
+            className={classes.drawerItemSignup}
           >
-            <ListItemText
-            disableTypography
-            >
+            <ListItemText disableTypography className={classes.drawerItem}>
               Sign Up
             </ListItemText>
           </ListItem>
         </List>
       </SwipeableDrawer>
-      <IconButton onClick={() => setOpenDrawer(!openDrawer)} disableRipple className={classes.drawerIconContianer}>
-        <MenuIcon className={classes.drawerIcon}/>
+      <IconButton
+        onClick={() => setOpenDrawer(!openDrawer)}
+        disableRipple
+        className={classes.drawerIconContianer}
+      >
+        <MenuIcon className={classes.drawerIcon} />
       </IconButton>
     </React.Fragment>
   );
