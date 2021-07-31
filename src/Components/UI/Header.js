@@ -3,7 +3,6 @@ import {
   AppBar,
   Toolbar, 
   useScrollTrigger,
-  Typography,
   Tabs,
   Tab,
   Button,
@@ -102,7 +101,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.common.lightGreen
   },
   drawerItemSelected: {
-    opacity: 1
+    "& .MuiListItemText-root": {
+      opacity: 1,
+    }
+  },
+  appbar: {
+    zIndex: theme.zIndex.modal + 1
   }
 }));
 
@@ -110,6 +114,7 @@ function Header() {
   const classes = useStyles()
   const [value, setValue] = useState(0)
   const [openDrawer, setOpenDrawer] = useState(false)
+  // const [selectedIndex, setSelectedIndex] = useState(0)
 
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
   
@@ -131,6 +136,51 @@ function Header() {
       setValue(3);
     } 
   }, [value])
+
+
+  // const routes = [
+  //   {
+  //     name: "Home",
+  //     link: '/',
+  //     activeIndex: 1,
+  //     selectedIndex: 0
+  //   },
+  //   {
+  //     name: "Create Meal",
+  //     link: '/createmeal',
+  //     activeIndex: 1,
+  //     selectedIndex: 1
+  //   },
+  //   {
+  //     name: "My Meals",
+  //     link: '/mymeals',
+  //     activeIndex: 1,
+  //     selectedIndex: 2
+  //   },
+  //   {
+  //     name: "Login",
+  //     link: '/login',
+  //     activeIndex: 1,
+  //     selectedIndex: 3
+  //   },
+  // ]
+
+  // useEffect =(()=> {
+  //   [...routes].forEach(route => {
+  //     switch(window.location.pathname) {
+  //       case `${route.link}`: 
+  //       if(value !== route.activeIndex){
+  //         setValue(route.activeIndex)
+  //         if(route.selectedIndex && route.selectedIndex !== selectedIndex){
+  //           setSelectedIndex(route.selectedIndex)
+  //         }
+  //       }
+  //       break;
+  //     default:
+  //       break
+  //     }
+  //   })
+  // }, [value, selectedIndex, routes])
 
   const tabs = (
     <React.Fragment>
@@ -181,6 +231,7 @@ function Header() {
         onOpen={() => setOpenDrawer(true)}
         classes={{ paper: classes.drawer }}
       >
+        <div className={classes.toolbarMargin}/>
         <List disablePadding>
           <ListItem
             component={Link}
@@ -195,11 +246,8 @@ function Header() {
           >
             <ListItemText
               disableTypography
-              className={
-                value === 0
-                  ? [classes.drawerItem, classes.drawerItemSelected]
-                  : classes.drawerItem
-              }
+              className={classes.drawerItem}
+              classes={{selected:classes.drawerItemSelected}}
             >
               Home
             </ListItemText>
@@ -217,11 +265,8 @@ function Header() {
           >
             <ListItemText
               disableTypography
-              className={
-                value === 1
-                  ? [classes.drawerItem, classes.drawerItemSelected]
-                  : classes.drawerItem
-              }
+              className={classes.drawerItem}
+              classes={{selected:classes.drawerItemSelected}}
             >
               Create Meal
             </ListItemText>
@@ -239,11 +284,8 @@ function Header() {
           >
             <ListItemText
               disableTypography
-              className={
-                value === 2
-                  ? [classes.drawerItem, classes.drawerItemSelected]
-                  : classes.drawerItem
-              }
+              className={classes.drawerItem}
+              classes={{selected:classes.drawerItemSelected}}
             >
               My Meals
             </ListItemText>
@@ -261,11 +303,8 @@ function Header() {
           >
             <ListItemText
               disableTypography
-              className={
-                value === 3
-                  ? [classes.drawerItem, classes.drawerItemSelected]
-                  : classes.drawerItem
-              }
+              className={classes.drawerItem}
+              classes={{selected: classes.drawerItemSelected}}
             >
               Login
             </ListItemText>
@@ -276,7 +315,7 @@ function Header() {
             divider
             button
             onClick={() => setOpenDrawer(false)}
-            className={classes.drawerItemSignup}
+            classes={{root: classes.drawerItemSignup}}
           >
             <ListItemText disableTypography className={classes.drawerItem}>
               Sign Up
@@ -296,7 +335,7 @@ function Header() {
   return (
     <React.Fragment>
       <ElevationScroll>
-        <AppBar position="fixed" color="primary">
+        <AppBar position="fixed" color="primary" className={classes.appbar}>
           <Toolbar disableGutters>
             <Button 
               component={Link} 
