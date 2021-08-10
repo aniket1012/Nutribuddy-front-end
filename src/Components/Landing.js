@@ -5,7 +5,6 @@ import {
     Button,
     Paper,
     TextField,
-    Switch
  } from '@material-ui/core'
  import { Link } from 'react-router-dom';
  import { makeStyles } from "@material-ui/core/styles";
@@ -24,14 +23,14 @@ import {
 function Landing() {
     const classes = useStyles()
 
-    const [state, setState] = React.useState({
-      checkedA: true,
-      checkedB: true,
-    });
+    const [age, setAge] = useState('')
+    const [sex, setSex] = useState('')
+    const [height, setHeight] = useState('')
+    const [weight, setWeight] = useState('')
+    const [goal, setGoal] = useState('')
+    const [activityLevel, setActivityLevel] = useState('')
 
-    const handleChange = (event) => {
-      setState({ ...state, [event.target.name]: event.target.checked });
-    };
+
 
     return (
       <Grid container className={classes.landingContainer} spacing={2}>
