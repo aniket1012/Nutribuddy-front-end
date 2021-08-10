@@ -5,6 +5,9 @@ import {
     Button,
     Paper,
     TextField,
+    InputLabel,
+    MenuItem,
+    Select
  } from '@material-ui/core'
  import { Link } from 'react-router-dom';
  import { makeStyles } from "@material-ui/core/styles";
@@ -32,6 +35,9 @@ function Landing() {
     const [activityLevel, setActivityLevel] = useState('')
 
 
+    const handleChange = (event) => {
+
+    }
 
     return (
       <Grid container className={classes.landingContainer} spacing={2}>
@@ -47,10 +53,22 @@ function Landing() {
             </Grid>
             <Grid item container direction="column" spacing={2} className={classes.inputContainer}>
               <Grid item>
-                <TextField id="filled-basic" label="Age" variant="filled" />
+                <TextField id="filled-basic" label="Age" variant="filled" value={age}/>
               </Grid>
               <Grid item>
-                <TextField id="filled-basic" label="Sex" variant="filled" />
+                {/* <TextField id="filled-basic" label="Sex" variant="filled" /> */}
+                <InputLabel id="demo-simple-select-filled-label">Sex</InputLabel>
+                  <Select
+                    id="demo-simple-select-filled"
+                    value={age}
+                    onChange={handleChange}
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value='male'>Male</MenuItem>
+                    <MenuItem value='female'>Female</MenuItem>
+                  </Select>
               </Grid>
               <Grid item>
                 <TextField id="filled-basic" label="Height" variant="filled" />
@@ -64,9 +82,9 @@ function Landing() {
               <Grid item>
                 <TextField id="filled-basic" label="Goal" variant="filled" />
               </Grid>
-            </Grid>
-            <Grid item>
-              <Button>Enter</Button>
+              <Grid item>
+                <Button variant='contained' color='secondary'>Enter</Button>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
