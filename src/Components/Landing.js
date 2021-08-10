@@ -11,12 +11,13 @@ import {
 
 
  const useStyles = makeStyles((theme) => ({
-   landingContainer: {
-
+   landingContainer: {},
+   landingRight: {
+     // backgroundColor: 'blue',
+     color: theme.palette.common.lightGrey,
    },
-   landingRight:{
-    // backgroundColor: 'blue',
-    color: theme.palette.common.lightGrey
+   inputContainer: {
+     marginLeft: '5px'
    }
  }));
 
@@ -44,7 +45,7 @@ function Landing() {
                 Enter Credentials to Find BaseLine
               </Typography>
             </Grid>
-            <Grid item container direction="column" spacing={2}>
+            <Grid item container direction="column" spacing={2} className={classes.inputContainer}>
               <Grid item>
                 <TextField id="filled-basic" label="Age" variant="filled" />
               </Grid>
@@ -58,17 +59,15 @@ function Landing() {
                 <TextField id="filled-basic" label="Weight" variant="filled" />
               </Grid>
               <Grid item>
-                <TextField
-                  id="filled-basic"
-                  label="Activity Level"
-                  variant="filled"
-                />
+                <TextField id="filled-basic" label="Activity Level" variant="filled"/>
               </Grid>
               <Grid item>
                 <TextField id="filled-basic" label="Goal" variant="filled" />
               </Grid>
             </Grid>
-            <Grid item>Button</Grid>
+            <Grid item>
+              <Button>Enter</Button>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
